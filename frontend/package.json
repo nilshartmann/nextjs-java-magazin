@@ -1,0 +1,46 @@
+{
+  "name": "frontend_nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:clean": "rm -rf .next && next dev --turbopack -p 8110",
+    "dev": "next dev --turbopack -p 8110",
+    "build": "next build",
+    "start": "next start -p 8110",
+    "lint": "next lint",
+    "check": "pnpm lint && pnpm prettier:check && tsc --noEmit --skipLibCheck",
+    "check:ts": "tsc --noEmit --skipLibCheck",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "openapi:generate": "typed-openapi -r zod ../backend/generated-api-doc.yaml -o app/components/api-types.ts && prettier --write app/components/api-types.ts",
+    "openapi:watch": "onchange -i ../backend/generated-api-doc.yaml -- pnpm openapi:generate"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.59.15",
+    "@tanstack/react-query-devtools": "^5.59.15",
+    "bootstrap-icons": "^1.11.3",
+    "date-fns": "^3.6.0",
+    "ky": "^1.7.2",
+    "next": "15.1.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.3.0",
+    "use-debounce": "^10.0.4",
+    "zod": "^3.22.5",
+    "zod-form-data": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.2",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "tailwindcss": "^3.4.3",
+    "typed-openapi": "^0.4.1",
+    "typescript": "^5.4.5"
+  }
+}
